@@ -1,4 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  inherit (pkgs) lib stdenv;
+in
+{
   programs.vim = {
     enable = true;
     defaultEditor = true;
@@ -13,8 +17,12 @@
         ./init/vimwiki.vim
       ]
     );
+    # Fix system clipboard for Darwin
+    # @see https://hardselius.github.io/vim-nix-darwin/
+    # @see https://stackoverflow.com/a/76594191
+    packageConfigurable = lib.mkIf stdenv.isDarwin pkgs.vim-darwin;
     plugins = with pkgs; [
-      # vimPlugins.vim-sensible
+      vimPlugins.vim-sensible
       vimPlugins.vim-matchup
       vimPlugins.vim-tmux-navigator
       vimPlugins.fzf-vim
