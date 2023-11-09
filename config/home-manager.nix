@@ -5,7 +5,6 @@ in
 {
   # Environment variables
   environment.variables = {
-    EDITOR = "vim";
     PAGER = "less";
   };
 
@@ -21,6 +20,9 @@ in
   home-manager.users = builtins.mapAttrs (name: user: {pkgs, ...}: {
     home.username = name;
     home.homeDirectory = user.directory;
+
+    # Map imported module file paths
+    home.packages = [] ++ (map (pkg: import pkg { inherit pkgs; }) modules.homepkgs);
 
     launchd.enable = true;
 

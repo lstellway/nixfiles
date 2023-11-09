@@ -14,6 +14,7 @@ let
 
     # Create /etc/zshrc that loads the nix-darwin environment.
     programs.zsh.enable = true;
+    # environment.shells = with pkgs; [ zsh ];
 
     # Set Git commit hash for darwin-version.
     system.configurationRevision = ({ self, ... }: self.rev or self.dirtyRev or null) inputs;

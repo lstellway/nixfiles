@@ -34,5 +34,6 @@ in
   darwin = findFiles { dir = ./.; prefix = "darwin-"; };
   nixos = findFiles { dir = ./.; prefix = "nixos-"; };
   home = findFiles { dir = ./.; prefix = "home-"; };
+  homepkgs = findFiles { dir = ./.; prefix = "homepkg-"; };
 }
 
