@@ -1,6 +1,3 @@
-# TODO:
-# How to get Spotlight to index /run/current-system/Applications
-# @see https://github.com/NixOS/nix/issues/7055
 inputs:
 let
   modules = import ./modules inputs;
