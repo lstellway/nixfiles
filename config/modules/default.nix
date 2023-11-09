@@ -1,3 +1,4 @@
+# This file exports an attribute set with modules intended to be included in different contexts.
 inputs:
 
 with inputs.nixpkgs.lib; let
