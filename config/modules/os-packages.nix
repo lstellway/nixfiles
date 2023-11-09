@@ -1,4 +1,10 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "teams"
+    ];
+  };
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -8,6 +14,7 @@
     crane
     direnv
     fd
+    ffmpeg
     fzf
     git
     gnugrep
@@ -27,7 +34,7 @@
     semgrep
     shellcheck
     skopeo
-    tmux
+    teams
     tmuxp
     vim
     yt-dlp

@@ -11,9 +11,10 @@ command -v nix-env > /dev/null 2>&1 || \
 
 # Source nix
 # Multi-user installation
-local FILE="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
+FILE="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 # Single-user installation
-local FILE2="${HOME}/.nix-profile/etc/profile.d/nix.sh"
+FILE2="${HOME}/.nix-profile/etc/profile.d/nix.sh"
+
 [ -e "${FILE}" ] && . "${FILE}" \
     || ([ -e "${FILE2}" ] && . "${FILE2}")
 

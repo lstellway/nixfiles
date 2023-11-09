@@ -1,8 +1,10 @@
 # TODO:
 # How to get Spotlight to index /run/current-system/Applications
 # @see https://github.com/NixOS/nix/issues/7055
-{ inputs, system, users, ... }:
+inputs:
 let
+  modules = import ./modules inputs;
+
   configuration = { pkgs, ... }: {
     # Auto upgrade nix package and the daemon service.
     services.nix-daemon.enable = true;
@@ -11,33 +13,26 @@ let
     nix.settings.experimental-features = "nix-command flakes";
 
     # Create /etc/zshrc that loads the nix-darwin environment.
-    programs.zsh.enable = true;  # default shell on catalina
-    # programs.fish.enable = true;
+    programs.zsh.enable = true;
 
     # Set Git commit hash for darwin-version.
-    system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
+    system.configurationRevision = ({ self, ... }: self.rev or self.dirtyRev or null) inputs;
 
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     system.stateVersion = 4;
 
     # The platform the configuration will be used on.
-    nixpkgs.hostPlatform = system;
-  };
-
-  home-manager-config = import ./home-manager.nix {
-    inherit users;
+    nixpkgs.hostPlatform = inputs.system;
   };
 in
 inputs.darwin.lib.darwinSystem {
-  modules = [
+  modules = modules.os ++ modules.darwin ++ [
     configuration
-    # Global packages
-    ./packages.nix
     # Home manager with nix-darwin in flakes
     # @see https://nix-community.github.io/home-manager/index.html#sec-flakes-nix-darwin-module
     inputs.home-manager.darwinModules.home-manager
-    home-manager-config
+    (import ./home-manager.nix inputs)
   ];
 }
 

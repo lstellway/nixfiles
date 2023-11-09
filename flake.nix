@@ -1,3 +1,6 @@
+# TODO:
+# Bin scripts
+# @see https://www.reddit.com/r/NixOS/comments/k3acxu/comment/ge36cbc/
 {
   description = "Darwin system flake";
 
@@ -11,19 +14,18 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  # TODO:
-  # This could be a great way to import modules specific to different OS
-  # @see https://github.com/reckenrode/nixos-configs/blob/3f80edaaadec7608761639648762e6d88f966dac/flake.nix#L33-L35
-  outputs = inputs@{ self, darwin, home-manager, nixpkgs }:
-  {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#simple
-    darwinConfigurations.bananas = import ./modules/darwin.nix {
-      inherit inputs;
-      system = "aarch64-darwin";
-      users = {
-        logan = { directory = "/Users/logan"; };
-      };
+  outputs = inputs: {
+    # Rebuild flake:
+    # $ darwin-rebuild flake --flake .
+    darwinConfigurations = {
+      # `//` is the "update" operator
+      # @see https://nixos.org/manual/nix/stable/language/operators.html#update
+      banana = import ./config/darwin.nix (inputs // {
+        system = "aarch64-darwin";
+        users = {
+          logan = { directory = "/Users/logan"; };
+        };
+      });
     };
   };
 }

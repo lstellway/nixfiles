@@ -1,13 +1,19 @@
-{ users, ... }: {
-  # Default editor
-  environment.variables.EDITOR = "vim";
+inputs:
+let
+  modules = import ./modules inputs;
+in
+{
+  # Environment variables
+  environment.variables = {
+    EDITOR = "vim";
+    PAGER = "less";
+  };
 
   # Declare OS users
   users.users = builtins.mapAttrs (name: user: {pkgs, ...}: {
-    shell = pkgs.zsh;
     name = name;
     home = user.directory;
-  }) users;
+  }) inputs.users;
 
   # Configure home manager
   home-manager.useGlobalPkgs = true;
@@ -16,8 +22,7 @@
     home.username = name;
     home.homeDirectory = user.directory;
 
-    # User-specific packages
-    # home.packages = [ pkgs.atool pkgs.httpie ];
+    launchd.enable = true;
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
@@ -31,6 +36,9 @@
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
-  }) users;
+
+    # Import all home-manager modules
+    imports = modules.home;
+  }) inputs.users;
 }
 
