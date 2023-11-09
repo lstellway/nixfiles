@@ -13,7 +13,7 @@
 
   outputs = inputs: {
     # Rebuild flake:
-    # $ darwin-rebuild flake --flake .
+    # $ darwin-rebuild switch --flake .
     darwinConfigurations = {
       # `//` is the "update" operator
       # @see https://nixos.org/manual/nix/stable/language/operators.html#update
