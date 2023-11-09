@@ -15,7 +15,6 @@
     direnv
     fd
     ffmpeg
-    fzf
     git
     gnugrep
     gnupg
