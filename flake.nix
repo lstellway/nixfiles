@@ -1,8 +1,5 @@
-# TODO:
-# Bin scripts
-# @see https://www.reddit.com/r/NixOS/comments/k3acxu/comment/ge36cbc/
 {
-  description = "Darwin system flake";
+  description = "OS configuration flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
