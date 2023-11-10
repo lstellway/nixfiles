@@ -1,16 +1,29 @@
 ## NixOS host configurations
 
-I am still learning how to use Nix (and flakes).
+After dabbling with [Chezmoi](https://chezmoi.io), I am beginning to incorporate Nix into my workflow to manage dotfiles and machine configuration.
 
-I intend to use Nix to manage my dotfiles and packages.. we'll see where this journey takes me.
+It was definitely a bit of a challenge to get started and accomplish what I was after, but I'm starting to get the hang of it and am pretty happy with the direction of my setup.
+
+### Installation
+
+**Darwin**
+
+Initialize machine:
+```
+make darwin
+```
+
+Rebuild:
+```
+make darwin-rebuild
+```
 
 ### To do
 
 - [ ] Configure git
-- [ ] Configure vscode
-- [ ] Install remaining applications
-- [ ] Setup homebrew
-- [ ] How to get Spotlight to index /run/current-system/Applications
-  - [ ] @see https://github.com/NixOS/nix/issues/7055
-
+- [ ] SSH configuration
+- [ ] Darwin
+  - [ ] How to get Spotlight to index Applications? (see [issue #7055](https://github.com/NixOS/nix/issues/7055))
+    - My workaround for now is to manage anything GUI apps (casks) with Homebrew
+  - [ ] [Machine config](https://github.com/mathiasbynens/dotfiles/blob/master/.macos)
 
