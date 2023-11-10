@@ -1,5 +1,11 @@
 .PHONY:
 
+TMUX_SESSION="lstellway/nixfiles"
+tmux:
+	@tmux has-session -t $(TMUX_SESSION) \
+		&& tmux attach -t $(TMUX_SESSION) \
+		|| tmuxp load .tmux.yml
+
 NIX_DARWIN_MULTI_USER="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 NIX_DARWIN_SINGLE_USER="$(HOME)/.nix-profile/etc/profile.d/nix.sh"
 

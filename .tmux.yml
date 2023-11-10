@@ -1,0 +1,14 @@
+session_name: lstellway/nixfiles
+windows:
+  - window_name: code
+    layout: tiled
+    shell_command_before: []
+    panes:
+      - shell_command:
+          - vim .
+
+  - window_name: browsing
+    layout: even-horizontal
+    panes:
+      - null
+
