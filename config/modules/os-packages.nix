@@ -23,17 +23,16 @@
     ipcalc
     jq
     k9s
-    keepassxc
     kubectl
     nodejs_20
     nodePackages.pnpm
     pandoc
     php82Packages.composer
     ripgrep
+    ripgrep-all
     semgrep
     shellcheck
     skopeo
-    teams
     tmuxp
     vim
     yt-dlp
