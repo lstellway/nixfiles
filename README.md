@@ -25,6 +25,5 @@ make darwin-rebuild
 - [ ] Darwin
   - [ ] How to get Spotlight to index Applications? (see [issue #7055](https://github.com/NixOS/nix/issues/7055))
     - My workaround for now is to manage anything GUI apps (casks) with Homebrew
-- [ ] Also, it doesn't look like the CLI binaries that ship with casks (VLC, VSCode, etc..) are available
-  - [ ] [Machine config](https://github.com/mathiasbynens/dotfiles/blob/master/.macos)
+    - It doesn't look like the CLI binaries that ship with casks (VLC, VSCode, etc..) are available
 
