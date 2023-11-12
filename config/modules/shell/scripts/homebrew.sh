@@ -1,3 +1,6 @@
+[ -e "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[ -d "/opt/homebrew/bin" ] && export PATH="${PATH}:/opt/homebrew/bin"
+
 brew-dir() {
   [ -n "${1}" ] || (echo "No package provided" && exit 1)
 
