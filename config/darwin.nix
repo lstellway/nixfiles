@@ -57,7 +57,7 @@ let
   };
 in
 inputs.darwin.lib.darwinSystem {
-  modules = modules.os ++ modules.darwin ++ [
+  modules = modules.common ++ modules.darwin ++ [
     configuration
     # Home manager with nix-darwin in flakes
     # @see https://nix-community.github.io/home-manager/index.html#sec-flakes-nix-darwin-module

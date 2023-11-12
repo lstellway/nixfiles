@@ -19,9 +19,9 @@ with inputs.nixpkgs.lib; let
   findFiles = { dir, name ? "", prefix ? "", suffix ? ".nix" }: map (file: dir + "/${file}") (
     filter (file:
       # Ignore default.nix files
-      file != "default.nix"
+      # file != "default.nix"
       # Filter by name
-      && (name == "" || file == name)
+      (name == "" || file == name)
       # Filter by prefix
       && (prefix == "" || hasPrefix prefix (baseNameOf file))
       # Filter by suffix
@@ -31,10 +31,9 @@ with inputs.nixpkgs.lib; let
 in
 {
   inherit findFiles;
-  os = findFiles { dir = ./.; prefix = "os-"; };
-  darwin = findFiles { dir = ./.; prefix = "darwin-"; };
-  nixos = findFiles { dir = ./.; prefix = "nixos-"; };
-  home = findFiles { dir = ./.; prefix = "home-"; };
-  homepkgs = findFiles { dir = ./.; prefix = "homepkg-"; };
+  common = findFiles { dir = ./common; };
+  darwin = findFiles { dir = ./darwin; };
+  nixos = findFiles { dir = ./nixos; };
+  home = findFiles { dir = ./home-manager; };
 }
 

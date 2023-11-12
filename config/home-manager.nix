@@ -22,7 +22,7 @@ in
     home.homeDirectory = user.directory;
 
     # Map imported module file paths
-    home.packages = [] ++ (map (pkg: import pkg { inherit pkgs; }) modules.homepkgs);
+    # home.packages = [] ++ (map (pkg: import pkg { inherit pkgs; }) modules.homepkgs);
 
     launchd.enable = true;
 
