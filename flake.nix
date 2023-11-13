@@ -17,7 +17,7 @@
     darwinConfigurations = {
       # `//` is the "update" operator
       # @see https://nixos.org/manual/nix/stable/language/operators.html#update
-      banana = import ./config/darwin.nix (inputs // {
+      banana = import ./modules/darwin (inputs // {
         system = "aarch64-darwin";
         users = {
           logan = { directory = "/Users/logan"; };

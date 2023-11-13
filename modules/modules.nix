@@ -31,9 +31,9 @@ with inputs.nixpkgs.lib; let
 in
 {
   inherit findFiles;
-  common = findFiles { dir = ./common; };
-  darwin = findFiles { dir = ./darwin; };
-  nixos = findFiles { dir = ./nixos; };
-  home = findFiles { dir = ./home-manager; };
+  common = findFiles { dir = ./common; suffix = ".inc.nix"; };
+  darwin = findFiles { dir = ./darwin; suffix = ".inc.nix"; };
+  nixos = findFiles { dir = ./nixos; suffix = ".inc.nix"; };
+  home = findFiles { dir = ./home-manager; suffix = ".inc.nix"; };
 }
 

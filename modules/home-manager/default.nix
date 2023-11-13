@@ -1,6 +1,6 @@
 inputs:
 let
-  modules = import ./modules inputs;
+  modules = import ../modules.nix inputs;
 in
 {
   # Environment variables
