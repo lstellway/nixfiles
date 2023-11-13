@@ -1,5 +1,6 @@
 {
- home.shellAliases = {
+  # Configure shell aliases
+  home.shellAliases = {
     c = "clear";
     ll = "ls -lAh";
     cl = "clear && ls -lAh";

@@ -1,6 +1,6 @@
 { lib, pkgs, ... }: {
-  # Example
-  # @see https://github.com/gilacost/dot-files/blob/3eddc6013abfd95852d3825837d67e86406328d4/darwin-configuration.nix#L255
+  # Homebrew configuration
+  # @see https://daiderd.com/nix-darwin/manual/index.html#opt-homebrew.enable
   homebrew = {
     enable = true;
 
@@ -26,6 +26,10 @@
       "acert"
     ];
 
+    # Note:
+    # There is an issue with GUI applications not being available in spotlight search.
+    # Installing applications via Homebrew seems to give the better experience for now.
+    # @see https://github.com/NixOS/nix/issues/7055
     casks = [
       # "anytype"
       "discord"

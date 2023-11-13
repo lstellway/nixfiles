@@ -1,9 +1,10 @@
 { lib, pkgs, ... }: {
-  nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "teams"
-    ];
-  };
+  # Allow installation of proprietary applications
+  # nixpkgs.config = {
+  #   allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  #     "teams"
+  #   ];
+  # };
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
