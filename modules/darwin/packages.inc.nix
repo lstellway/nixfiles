@@ -24,6 +24,7 @@
 
     brews = [
       "acert"
+      "docker-compose"
     ];
 
     # Note:
@@ -33,9 +34,10 @@
     casks = [
       # "anytype"
       "discord"
-      # "docker"
+      "docker"
       "element"
       "focusrite-control"
+      "google-chrome"
       "keepassxc"
       "microsoft-teams"
       "notion"
