@@ -1,8 +1,6 @@
 ## NixOS host configurations
 
-After dabbling with [Chezmoi](https://chezmoi.io), I am beginning to incorporate Nix into my workflow to manage dotfiles and machine configuration.
-
-It was definitely a bit of a challenge to get started and accomplish what I was after, but I'm starting to get the hang of it and am pretty happy with the direction of my setup.
+My Nix configuration files!
 
 ### Installation
 
@@ -18,8 +16,18 @@ Rebuild:
 make darwin-rebuild
 ```
 
+### Structure
+
+- `modules`
+  - `modules.nix` - helper for including modules in various contexts *(Darwin, NixOS, Home Manager, etc..)*
+  - `common` - shared OS-level modules
+  - `darwin` - modules specific to Darwin
+  - `nixos` - modules specific to NixOS
+  - `home-manager` - shared Home Manager modules
+
 ### To do
 
 - [ ] Configure git
-- [ ] SSH configuration
+- [ ] SSH configuration?
+- [ ] GPG key management?
 
