@@ -37,8 +37,8 @@ inputs: {
     PMPrintingExpandedStateForPrint = true;
     PMPrintingExpandedStateForPrint2 = true;
     "com.apple.mouse.tapBehavior" = 1;
-    "com.apple.sound.beep.feedback" = 0;
-    "com.apple.sound.beep.volume" = 0.0;
+    # "com.apple.sound.beep.feedback" = 0;
+    "com.apple.sound.beep.volume" = 0.25;
     "com.apple.swipescrolldirection" = true;
     "com.apple.trackpad.enableSecondaryClick" = true;
     "com.apple.trackpad.scaling" = 3.0;
