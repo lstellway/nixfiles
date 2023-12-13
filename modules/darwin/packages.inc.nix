@@ -25,6 +25,7 @@
     brews = [
       "acert"
       "docker-compose"
+      "mysql-client"
     ];
 
     # Note:
