@@ -21,6 +21,8 @@
     gnupg
     go
     hledger
+    hledger-ui
+    hledger-web
     ipcalc
     jq
     k9s
