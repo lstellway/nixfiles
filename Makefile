@@ -1,15 +1,9 @@
 .PHONY:
 
-TMUX_SESSION="lstellway/nixfiles"
-tmux:
-	@tmux has-session -t $(TMUX_SESSION) \
-		&& tmux attach -t $(TMUX_SESSION) \
-		|| tmuxp load .tmux.yml
-
 NIX_DARWIN_MULTI_USER="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 NIX_DARWIN_SINGLE_USER="$(HOME)/.nix-profile/etc/profile.d/nix.sh"
 
-darwin:
+deps:
 	# Install Nix
 	@# Uses Determinate Systems installer
 	@# @see https://github.com/DeterminateSystems/nix-installer
@@ -23,10 +17,11 @@ darwin:
 	@[ -e "$(NIX_DARWIN_MULTI_USER)" ] && . "$(NIX_DARWIN_MULTI_USER)" \
 	    || ([ -e "$(NIX_DARWIN_SINGLE_USER)" ] && . "$(NIX_DARWIN_SINGLE_USER)")
 
-	# Install flake
+init-darwin:
+	# Install Flake using nix-darwin
 	@nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake .
 
-
-darwin-rebuild:
-	darwin-rebuild switch --flake .
+darwin:
+	# Rebuild Darwin configuration
+	@darwin-rebuild switch --flake .
 

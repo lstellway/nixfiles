@@ -23,8 +23,6 @@
         ./scripts/docker.sh
         ./scripts/homebrew.sh
         ./scripts/prompt.zsh
-        ./scripts/ssh.sh
-        ./scripts/terminal.sh
         ./scripts/timer.sh
       ]
     );

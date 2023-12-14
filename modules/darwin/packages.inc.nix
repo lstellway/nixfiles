@@ -19,12 +19,11 @@
     taps = [
       "homebrew/core"
       "homebrew/cask"
-      "lstellway/formulae"
     ];
 
     brews = [
-      "acert"
       "docker-compose"
+      "mysql-client"
     ];
 
     # Note:
@@ -32,21 +31,10 @@
     # Installing applications via Homebrew seems to give the better experience for now.
     # @see https://github.com/NixOS/nix/issues/7055
     casks = [
-      # "anytype"
-      "discord"
       "docker"
-      "element"
-      "focusrite-control"
-      "google-chrome"
       "keepassxc"
       "microsoft-teams"
-      "notion"
       # "openoffice"
-      "plexamp"
-      "readwise-ibooks"
-      "slack"
-      # "tabula"
-      "tailscale"
       "visual-studio-code"
       "vlc"
     ];
