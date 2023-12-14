@@ -21,6 +21,7 @@
         ./scripts/aliases.sh
         ./scripts/aws.sh
         ./scripts/docker.sh
+        ./scripts/git.sh
         ./scripts/homebrew.sh
         ./scripts/prompt.zsh
         ./scripts/timer.sh

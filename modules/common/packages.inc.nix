@@ -58,6 +58,7 @@
     # @see https://www.shellcheck.net
     shellcheck
     # Utility to manage remote container repositories
+    # @see https://github.com/containers/skopeo
     skopeo
     # TMUX session manager
     # @see https://github.com/tmux-python/tmuxp
