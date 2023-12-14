@@ -4,16 +4,23 @@ My Nix configuration files!
 
 ### Installation
 
+**Install NixOS**
+
+Install NixOS using the [official NixOS installer](https://nix.dev/install-nix.html):
+```
+make deps
+```
+
 **Darwin**
 
-Initialize machine:
+Install Flake using [nix-darwin](https://github.com/LnL7/nix-darwin):
 ```
-make darwin
+make init-darwin
 ```
 
-Rebuild:
+Rebuild Darwin machine configuration:
 ```
-make darwin-rebuild
+make darwin
 ```
 
 ### Structure
