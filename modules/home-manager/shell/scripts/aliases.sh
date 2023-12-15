@@ -18,8 +18,11 @@ dictionary () {
 }
 
 dotenv() {
+  # @see https://stackoverflow.com/a/44364170
   if [ -f ".env" ]; then
-    export $(cat .env | sed 's/ = /=/g' | sed 's/^#.*//g' | xargs)
+    set -o allexport
+    source ".env"
+    set +o allexport
   fi
 }
 
