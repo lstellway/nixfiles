@@ -17,8 +17,8 @@
     };
 
     taps = [
-      "homebrew/core"
-      "homebrew/cask"
+      # "homebrew/core"
+      # "homebrew/cask"
       "lstellway/formulae"
     ];
 
