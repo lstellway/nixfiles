@@ -44,6 +44,7 @@
       "notion"
       # "openoffice"
       "plexamp"
+      "qlmarkdown"
       "readwise-ibooks"
       "slack"
       # "tabula"
