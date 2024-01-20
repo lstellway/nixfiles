@@ -48,12 +48,13 @@ function! ClearSwapFiles() abort
 endfunction
 command! -nargs=0 ClearSwap call ClearSwapFiles()
 
-" Copy file name to system clipboard
-function! FilenameToClipboard() abort
-  " Set the system register value = the register value of the current file path
-  let @+=@%
+" Copy relative file path to system clipboard
+" Set the system register value = the register value of the current file path
+function! CopyToClipboard(value) abort
+  let @+=a:value
 endfunction
-command! -nargs=0 Clipboard call FilenameToClipboard()
+command! -nargs=0 RelativePath call CopyToClipboard(@%)
+command! -nargs=0 AbsolutePath call CopyToClipboard(expand('%:p'))
 
 " Go to definition
 nnoremap <leader>i :vsplit \| :call CocAction('jumpDefinition')<CR>
