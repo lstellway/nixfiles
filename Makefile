@@ -22,6 +22,10 @@ init-darwin:
 	@# @see https://github.com/LnL7/nix-darwin
 	@nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake .
 
+darwin-backup:
+	sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin
+	sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
+
 darwin:
 	# Rebuild Darwin configuration
 	@darwin-rebuild switch --flake .
