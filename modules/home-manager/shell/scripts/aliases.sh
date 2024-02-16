@@ -26,3 +26,14 @@ dotenv() {
   fi
 }
 
+rmount() {
+  local MOUNT_NAME="${1}"
+  [ -n "${MOUNT_NAME}" ] || (echo "Provide the mount location" && exit 1)
+
+  # Create mount path
+  MOUNT_PATH="${HOME}/.mounts/${MOUNT_NAME}"
+  [ -d "${MOUNT_PATH}" ] || mkdir -p "${MOUNT_PATH}"
+
+  rclone mount --daemon "${MOUNT_NAME}:" ${MOUNT_PATH}
+}
+
