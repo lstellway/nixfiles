@@ -25,7 +25,9 @@
     brews = [
       "acert"
       "docker-compose"
+      "mas"
       "mysql-client"
+      "watchman"
     ];
 
     # Note:
@@ -40,17 +42,28 @@
       "focusrite-control"
       "google-chrome"
       "keepassxc"
-      "microsoft-teams"
+      "macfuse"
+      # "microsoft-teams"
       "notion"
       # "openoffice"
       "plexamp"
       "qlmarkdown"
-      "readwise-ibooks"
+      # "readwise-ibooks"
       "slack"
       # "tabula"
       "tailscale"
+      "transmit"
       "visual-studio-code"
       "vlc"
     ];
+
+    masApps = {
+      "Magnet" = 441258766;
+      "Numbers" = 409203825;
+      "Pages" = 409201541;
+      "Keynote" = 409183694;
+      "Pixelmator Pro" = 1289583905;
+      # "Logic Pro" = 634148309;
+    };
   };
 }

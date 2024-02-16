@@ -51,6 +51,8 @@
     # PHP package manager
     # @see https://getcomposer.org
     php82Packages.composer
+    # see https://rclone.org
+    rclone
     # Recursive file search
     # @see https://github.com/BurntSushi/ripgrep
     ripgrep
