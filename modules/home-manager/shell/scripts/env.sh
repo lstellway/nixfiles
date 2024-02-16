@@ -6,3 +6,6 @@ if [ -f "${HOME}/.env" ]; then
   set +o allexport
 fi
 
+# Path variables
+[ -d "${HOME}/bin" ] && export PATH="${HOME}/bin:${PATH}"
+
