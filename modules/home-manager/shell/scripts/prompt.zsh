@@ -11,6 +11,10 @@ select-word-style bash
 # @see https://stackoverflow.com/a/58517668
 autoload -Uz compinit && compinit
 
+# Case-insentive matching
+# @see https://superuser.com/a/1092328
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
 # Utilize vcs_info package
 # @see https://arjanvandergaag.nl/blog/customize-zsh-prompt-with-vcs-info.html
 # @see https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#Version-Control-Information
