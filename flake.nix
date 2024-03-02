@@ -2,8 +2,9 @@
   description = "OS configuration flake";
 
   inputs = {
-    # Pin Nix at version
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    # Pin Nix at 23.05
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Import nix-darwin
     # @see https://github.com/LnL7/nix-darwin
@@ -12,7 +13,7 @@
 
     # Import home-manager
     # @see https://nix-community.github.io/home-manager/
-    home-manager.url = "github:nix-community/home-manager?ref=release-23.05";
+    home-manager.url = "github:nix-community/home-manager?ref=release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
