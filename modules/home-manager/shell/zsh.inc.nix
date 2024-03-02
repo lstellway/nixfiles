@@ -28,6 +28,7 @@
         ./scripts/ssh.sh
         ./scripts/terminal.sh
         ./scripts/timer.sh
+        ./scripts/yt.sh
       ]
     );
   };

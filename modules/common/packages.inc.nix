@@ -10,6 +10,9 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     awscli
+    # @see https://buf.build
+    buf
+    # @see https://bun.sh
     bun
     chezmoi
     # Google's CLI tool for managing container images
@@ -51,6 +54,8 @@
     # PHP package manager
     # @see https://getcomposer.org
     php82Packages.composer
+    # @see https://protobuf.dev
+    protobuf
     # see https://rclone.org
     rclone
     # Recursive file search
@@ -72,6 +77,7 @@
     # @see https://github.com/tmux-python/tmuxp
     tmuxp
     vim
+    xsv
     yt-dlp
     zoxide
     zsh

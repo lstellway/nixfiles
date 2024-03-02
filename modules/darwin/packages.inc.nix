@@ -36,11 +36,13 @@
     # @see https://github.com/NixOS/nix/issues/7055
     casks = [
       # "anytype"
+      "asana"
       "discord"
       "docker"
       "element"
       "focusrite-control"
       "google-chrome"
+      "graphiql"
       "keepassxc"
       "macfuse"
       # "microsoft-teams"
@@ -49,6 +51,7 @@
       "plexamp"
       "qlmarkdown"
       # "readwise-ibooks"
+      "rectangle"
       "slack"
       # "tabula"
       "tailscale"
@@ -58,7 +61,7 @@
     ];
 
     masApps = {
-      "Magnet" = 441258766;
+      # "Magnet" = 441258766;
       "Numbers" = 409203825;
       "Pages" = 409201541;
       "Keynote" = 409183694;

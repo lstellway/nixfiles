@@ -1,6 +1,7 @@
 # Git
 alias ga='git add';
 alias gd='git diff';
+alias gw='git worktree';
 alias gpc='git push origin $(git branch --show-current)';
 alias gpo='git pull origin $(git branch --show-current)';
 alias gfo='git fetch origin $(git branch --show-current)';
