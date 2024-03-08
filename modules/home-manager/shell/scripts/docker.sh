@@ -1,3 +1,21 @@
+# Experiencing an issue where Docker is constantly trying to connect to remote hosts
+# @see https://forums.docker.com/t/docker-continuously-making-unnecessary-ssh-connections-to-remote-servers/136132
+# List process IDs where Docker is connecting to remote environment
+docker-ssh-sessions() {
+  ps -ax \
+    | grep -iE 'ssh.*docker system dial-stdio' \
+    | grep -vi 'grep' \
+    | awk '{print $1}'
+}
+
+# Kill processes
+docker-kill-ssh-sessions() {
+  local SESSIONS=$(docker-ssh-sessions)
+
+  [ -n "${SESSIONS}" ] \
+    && docker-ssh-sessions | xargs kill
+}
+
 # I originally created these functions because I noticed my remote Docker host connections were very slow.
 # Soon after I learned about using persistent SSH connections as a means of improving performance.
 # @see https://docs.docker.com/engine/security/protect-access/#ssh-tips

@@ -1,6 +1,20 @@
 # Setup SSH port
 SYSTEM_SSH_PLIST="/System/Library/LaunchDaemons/ssh.plist"
 
+# Find cached SSH connections
+ssh-sessions() {
+  ps -ax \
+    | grep -i '.ssh/control' \
+    | grep -vi 'grep' \
+    | awk '{print $1}'
+}
+
+# Kill cached SSH sessions
+ssh-kill-sessions() {
+  local SESSIONS=$(ssh-sessions)
+  [ -n "${SESSIONS}" ] && ssh-sessions | xargs kill
+}
+
 ssh_set_port() {
   # Ensure a port is specified
   if [ -z "$1" ]; then
