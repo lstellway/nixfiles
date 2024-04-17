@@ -20,7 +20,7 @@
       map (script: (pkgs.lib.readFile script) + "\n") [
         ./scripts/aliases.sh
         ./scripts/aws.sh
-        ./scripts/docker.sh
+        ./scripts/containers.sh
         ./scripts/env.sh
         ./scripts/git.sh
         ./scripts/homebrew.sh
