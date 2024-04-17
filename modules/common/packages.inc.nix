@@ -23,6 +23,7 @@
     # Tool to help automate shell environments based on the working directory
     # @see https://direnv.net
     direnv
+    envsubst
     # `find` alternative
     # @see https://github.com/sharkdp/fd
     fd
