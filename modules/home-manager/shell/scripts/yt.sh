@@ -1,3 +1,9 @@
+yt-title() {
+  local JSON=$(yt-dlp -j --quiet $@)
+  local TITLE=$(jq -r '.title' <<< $JSON)
+  echo $TITLE
+}
+
 yt-transcript() {
   # yt-dlp has a native way to download subtitle files
   # yt-dlp --write-auto-sub --write-sub --sub-lang "en,en-us,en-GB,automatic-caption-en" --skip-download $@
