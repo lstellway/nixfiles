@@ -24,10 +24,9 @@
 
     brews = [
       "acert"
-      "docker-compose"
       "mas"
       "mysql-client"
-      "watchman"
+      # "watchman"
     ];
 
     # Note:
@@ -38,11 +37,12 @@
       # "anytype"
       "asana"
       "discord"
-      "docker"
+      # "docker"
       "element"
       "focusrite-control"
       "google-chrome"
       "graphiql"
+      "ireal-pro"
       "keepassxc"
       "macfuse"
       # "microsoft-teams"
@@ -51,6 +51,7 @@
       "plexamp"
       "qlmarkdown"
       # "readwise-ibooks"
+      "rancher"
       "rectangle"
       "slack"
       # "tabula"

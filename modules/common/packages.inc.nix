@@ -10,6 +10,8 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     awscli
+    # @see https://bazel.build
+    bazel
     # @see https://buf.build
     buf
     # @see https://bun.sh
@@ -25,6 +27,7 @@
     # @see https://github.com/sharkdp/fd
     fd
     ffmpeg
+    fswatch
     git
     # GNU flavor of the `grep` CLI tool
     # @see https://www.gnu.org/software/grep/
@@ -45,7 +48,6 @@
     # CLI GUI to manage Kubernetes cluster resources
     # @see https://k9scli.io
     k9s
-    kubectl
     nodejs_20
     nodePackages.pnpm
     # Document conversion utility
