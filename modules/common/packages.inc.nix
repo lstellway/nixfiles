@@ -33,7 +33,6 @@
     fswatch
     # GitHub CLI
     gh
-    git
     # GNU flavor of the `grep` CLI tool
     # @see https://www.gnu.org/software/grep/
     gnugrep
@@ -53,9 +52,6 @@
     # Command-line JSON parser
     # @see https://jqlang.github.io/jq/
     jq
-    # CLI GUI to manage Kubernetes cluster resources
-    # @see https://k9scli.io
-    k9s
     nodejs_20
     nodePackages.pnpm
     # Document conversion utility
