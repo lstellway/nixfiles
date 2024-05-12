@@ -28,7 +28,11 @@
     # @see https://github.com/sharkdp/fd
     fd
     ffmpeg
+    # File change monitor
+    # @see https://github.com/emcrisostomo/fswatch
     fswatch
+    # GitHub CLI
+    gh
     git
     # GNU flavor of the `grep` CLI tool
     # @see https://www.gnu.org/software/grep/
@@ -43,6 +47,9 @@
     # IP subnet calculator
     # @see https://github.com/kjokjo/ipcalc
     ipcalc
+    # Jira CLI
+    # @see https://github.com/ankitpokhrel/jira-cli
+    # jira-cli-go
     # Command-line JSON parser
     # @see https://jqlang.github.io/jq/
     jq
@@ -67,6 +74,7 @@
     # Extension of Ripgrep with the ability to search binary file formats (PDF, etc..)
     # @see https://github.com/phiresky/ripgrep-all
     ripgrep-all
+    rustc cargo
     # Code static analysis
     # @see https://semgrep.dev
     semgrep
@@ -76,6 +84,8 @@
     # Utility to manage remote container repositories
     # @see https://github.com/containers/skopeo
     skopeo
+    # Gitea CLI client
+    tea
     # TMUX session manager
     # @see https://github.com/tmux-python/tmuxp
     tmuxp

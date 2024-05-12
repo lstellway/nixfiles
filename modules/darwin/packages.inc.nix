@@ -20,12 +20,15 @@
       # "homebrew/core"
       # "homebrew/cask"
       "lstellway/formulae"
+      "shopify/shopify"
     ];
 
     brews = [
       "acert"
       "mas"
       "mysql-client"
+      "shopify/shopify/shopify-cli"
+      "shopify/shopify/themekit"
       # "watchman"
     ];
 
@@ -39,6 +42,7 @@
       "discord"
       # "docker"
       "element"
+      "figma"
       "focusrite-control"
       "google-chrome"
       "graphiql"
