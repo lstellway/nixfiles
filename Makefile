@@ -30,3 +30,9 @@ darwin:
 	# Rebuild Darwin configuration
 	@darwin-rebuild switch --flake .
 
+update:
+	@nix flake update
+
+home-manager-help:
+	man home-configuration.nix
+
