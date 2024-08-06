@@ -46,6 +46,8 @@ _title_leader() {
 }
 
 setopt prompt_subst
+# Do not keep commands starting with a space in history
+setopt HIST_IGNORE_SPACE
 PROMPT='%F{4}%~%f${vcs_info_msg_0_} $(_title_leader) '
 RPROMPT='%F{2}%n%f %F{4}%W %*%f'
 
