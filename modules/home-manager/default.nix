@@ -14,6 +14,9 @@ in
     home = user.directory;
   }) inputs.users;
 
+  # Backup file extension used when backing up existing program configuration files.
+  home-manager.backupFileExtension = "backup";
+
   # Configure home manager
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
