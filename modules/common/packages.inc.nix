@@ -9,6 +9,8 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+    # @see https://atlasgo.io
+    atlas
     awscli
     # @see https://bazel.build
     bazel
@@ -31,8 +33,6 @@
     # File change monitor
     # @see https://github.com/emcrisostomo/fswatch
     fswatch
-    # GitHub CLI
-    gh
     # GNU flavor of the `grep` CLI tool
     # @see https://www.gnu.org/software/grep/
     gnugrep
@@ -40,6 +40,10 @@
     # @see https://www.gnupg.org
     gnupg
     go
+    # gRPC client from FullStory
+    # @see https://github.com/fullstorydev/grpcurl
+    grpcurl
+    grpcui
     hledger
     hledger-ui
     hledger-web
@@ -62,6 +66,8 @@
     php82Packages.composer
     # @see https://protobuf.dev
     protobuf
+    protoc-gen-go
+    protoc-gen-go-grpc
     # see https://rclone.org
     rclone
     # Recursive file search
