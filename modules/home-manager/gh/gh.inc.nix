@@ -1,0 +1,11 @@
+{ pkgs, ... }: {
+  programs.gh = {
+    enable = true;
+    settings = {
+      editor = "vim";
+      git_protocol = "ssh";
+      prompt = "enabled";
+      pager = "less";
+    };
+  };
+}
