@@ -9,4 +9,3 @@
     extraConfig = pkgs.lib.readFile ./tmux.conf;
   };
 }
-

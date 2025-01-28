@@ -1,14 +1,15 @@
 .PHONY:
 
+# Install Nix
 deps:
-	# Install Nix
-	@command -v nix-env > /dev/null 2>&1 || \
-		@# Use Determinate Systems installer
-		@# @see https://github.com/DeterminateSystems/nix-installer
-		@# curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-		@# Default installer
-		@# @see https://nix.dev/install-nix.html
-		@curl -L https://nixos.org/nix/install | sh
+	@command -v nix-env > /dev/null 2>&1 \
+		|| curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+# Use Determinate Systems installer
+# @see https://github.com/DeterminateSystems/nix-installer
+# curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+# Default installer
+# @see https://nix.dev/install-nix.html
+# curl -L https://nixos.org/nix/install | sh
 
 NIX_DARWIN_MULTI_USER="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 NIX_DARWIN_SINGLE_USER="$(HOME)/.nix-profile/etc/profile.d/nix.sh"
@@ -25,13 +26,14 @@ init-darwin:
 darwin-backup:
 	sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin
 	sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
+	sudo mv /etc/zprofile /etc/zprofile.before-nix-darwin
 
 darwin:
 	# Rebuild Darwin configuration
 	@darwin-rebuild switch --flake .
 
 update:
-	@nix flake update
+	@nix flake update --extra-experimental-features nix-command --extra-experimental-features flakes
 
 home-manager-help:
 	man home-configuration.nix
