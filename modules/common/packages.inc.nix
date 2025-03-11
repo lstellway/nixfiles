@@ -71,6 +71,8 @@
     # Command-line JSON parser
     # @see https://jqlang.github.io/jq/
     jq
+    # @see https://nixpacks.com
+    nixpacks
     nodejs_20
     nodePackages.pnpm
     # OpenTofu - open-source Terraform fork

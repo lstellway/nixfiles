@@ -32,6 +32,7 @@ darwin:
 	# Rebuild Darwin configuration
 	@darwin-rebuild switch --flake .
 
+# Be sure to run the update when changing Nix dependencies
 update:
 	@nix flake update --extra-experimental-features nix-command --extra-experimental-features flakes
 
