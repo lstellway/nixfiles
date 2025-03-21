@@ -14,26 +14,28 @@ deps:
 NIX_DARWIN_MULTI_USER="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 NIX_DARWIN_SINGLE_USER="$(HOME)/.nix-profile/etc/profile.d/nix.sh"
 
-init-darwin:
-	@# Source nix to current shell session
-	@[ -e "$(NIX_DARWIN_MULTI_USER)" ] && . "$(NIX_DARWIN_MULTI_USER)" \
-	    || ([ -e "$(NIX_DARWIN_SINGLE_USER)" ] && . "$(NIX_DARWIN_SINGLE_USER)")
-
+# Initialize the Darwin flake
+# Only need to run the first time after installing Nix.
+darwin-init:
 	# Install Flake with nix-darwin
 	@# @see https://github.com/LnL7/nix-darwin
 	@nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake .
 
+# Rebuild
+darwin:
+	# Rebuild Darwin configuration
+	@darwin-rebuild switch --flake .
+
+# Backup files
+# The rebuild often complains about these files existing.
 darwin-backup:
 	sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin
 	sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
 	sudo mv /etc/zprofile /etc/zprofile.before-nix-darwin
 
-darwin:
-	# Rebuild Darwin configuration
-	@darwin-rebuild switch --flake .
-
-# Be sure to run the update when changing Nix dependencies
-update:
+# Update the flake lock when changing dependencies.
+# Eg. when upgrading nixpkgs
+darwin-update:
 	@nix flake update --extra-experimental-features nix-command --extra-experimental-features flakes
 
 home-manager-help:
