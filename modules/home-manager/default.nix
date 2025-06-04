@@ -39,7 +39,7 @@ in
     # changes in each release.
     # The state version is required and should stay at the version you
     # originally installed.
-    home.stateVersion = "23.05";
+    home.stateVersion = "24.11";
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;

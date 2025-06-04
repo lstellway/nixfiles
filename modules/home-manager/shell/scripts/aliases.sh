@@ -18,10 +18,11 @@ dictionary () {
 }
 
 dotenv() {
+  ENV_FILE="${1:-.env}"
   # @see https://stackoverflow.com/a/44364170
-  if [ -f ".env" ]; then
+  if [ -f "${ENV_FILE}" ]; then
     set -o allexport
-    source ".env"
+    source "${ENV_FILE}"
     set +o allexport
   fi
 }

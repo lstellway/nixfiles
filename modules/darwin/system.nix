@@ -44,6 +44,13 @@ inputs: {
     "com.apple.trackpad.scaling" = 3.0;
   };
 
+  # @see https://nix-darwin.github.io/nix-darwin/manual/index.html#opt-security.pam.services.sudo_local.touchIdAuth
+  # security.pam.services.sudo_local = {
+  #   enable = true;
+  #   reattach = true;
+  #   touchIdAuth = true;
+  # };
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;

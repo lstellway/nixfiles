@@ -39,6 +39,7 @@
     casks = [
       # "anytype"
       "asana"
+      "cursor"
       "discord"
       # "docker"
       "element"
@@ -65,7 +66,7 @@
       # "tabula"
       "tailscale"
       "transmit"
-      "visual-studio-code"
+      "vscodium"
       "vlc"
     ];
 

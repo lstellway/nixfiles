@@ -65,6 +65,8 @@
     # IP subnet calculator
     # @see https://github.com/kjokjo/ipcalc
     ipcalc
+    # Image optimization
+    jpegoptim
     # Jira CLI
     # @see https://github.com/ankitpokhrel/jira-cli
     # jira-cli-go
@@ -86,6 +88,8 @@
     # PHP package manager
     # @see https://getcomposer.org
     php82Packages.composer
+    podman
+    podman-compose
     # @see https://protobuf.dev
     protobuf
     protoc-gen-go
@@ -116,7 +120,13 @@
     terraform
     # terraformer
     # cf-terraforming
+    # TuringPi CLI
+    # @see https://github.com/turing-machines/tpi/tree/07e3bfe44b6be1f2607fd220798dfc7287322c70
+    tpi
     vim
+    # Google's font compression
+    # @see https://github.com/google/woff2
+    woff2
     xsv
     yt-dlp
     zoxide
