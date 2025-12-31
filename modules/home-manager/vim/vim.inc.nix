@@ -21,33 +21,51 @@ in
     # @see https://hardselius.github.io/vim-nix-darwin/
     # @see https://stackoverflow.com/a/76594191
     packageConfigurable = lib.mkIf stdenv.isDarwin pkgs.vim-darwin;
-    plugins = with pkgs; [
-      vimPlugins.vim-sensible
-      vimPlugins.vim-matchup
-      vimPlugins.vim-tmux-navigator
-      vimPlugins.fzf-vim
-      vimPlugins.vim-ledger
-      vimPlugins.vim-fugitive
-      vimPlugins.vim-commentary
-      vimPlugins.vim-airline
-      vimPlugins.vim-airline-themes
-      vimPlugins.vimwiki
-      # Conquer of completion
-      vimPlugins.coc-nvim
-      vimPlugins.coc-tsserver
-      vimPlugins.coc-html
-      vimPlugins.coc-prettier
-      vimPlugins.coc-css
-      vimPlugins.coc-docker
-      vimPlugins.coc-go
-      vimPlugins.coc-emmet
-      vimPlugins.coc-eslint
-      vimPlugins.coc-yaml
-      vimPlugins.coc-toml
-      vimPlugins.coc-json
-      vimPlugins.coc-solargraph
-      vimPlugins.coc-tailwindcss
+    plugins = with pkgs.vimPlugins; [
+      coc-css
+      coc-docker
+      coc-emmet
+      coc-eslint
+      coc-go
+      coc-html
+      coc-json
+      coc-nvim
+      coc-prettier
+      coc-solargraph
+      coc-tailwindcss
+      coc-toml
+      coc-tsserver
+      coc-yaml
+      fzf-vim
+      vim-airline
+      vim-airline-themes
+      vim-commentary
+      vim-fugitive
+      vim-ledger
+      vim-matchup
+      vim-sensible
+      vim-tmux-navigator
+      vimwiki
     ];
+  };
+
+  xdg.configFile."vim/coc-settings.json" = {
+    enable = true;
+    text = builtins.toJSON {
+      "coc.preferences.formatOnSaveFiletypes" = [
+        "json"
+        "javascript"
+        "javascriptreact"
+        "typescript"
+        "typescriptreact"
+        "nix"
+        "python"
+        "rust"
+      ];
+
+      "suggest.noselect" = true;
+      "suggest.enablePreview" = true;
+    };
   };
 }
 
