@@ -15,7 +15,7 @@
         };
       }
     ];
-    initExtra = pkgs.lib.concatStrings (
+    initContent = pkgs.lib.concatStrings (
       # Read contents of provided file paths
       map (script: (pkgs.lib.readFile script) + "\n") [
         ./scripts/aliases.sh

@@ -3,17 +3,17 @@
 
   inputs = {
     # Pin Nix
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Import nix-darwin
     # @see https://github.com/LnL7/nix-darwin
-    darwin.url = "github:LnL7/nix-darwin/nix-darwin-24.11";
+    darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.11";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Import home-manager
     # @see https://nix-community.github.io/home-manager/
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 

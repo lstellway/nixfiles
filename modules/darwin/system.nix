@@ -1,7 +1,4 @@
 inputs: {
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -11,6 +8,9 @@ inputs: {
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = ({ self, ... }: self.rev or self.dirtyRev or null) inputs;
+
+  # Define primary user
+  system.primaryUser = builtins.head (builtins.attrNames inputs.users);
 
   # Global system preferences
   # @see https://daiderd.com/nix-darwin/manual/index.html#opt-system.defaults.NSGlobalDomain.AppleEnableMouseSwipeNavigateWithScrolls

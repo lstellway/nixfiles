@@ -24,7 +24,11 @@ darwin-init:
 # Rebuild
 darwin:
 	# Rebuild Darwin configuration
-	@darwin-rebuild switch --flake .
+	@sudo darwin-rebuild switch --flake .
+
+darwin-activate:
+	# Rebuild Darwin configuration
+	@sudo darwin-rebuild activate --flake .
 
 # Backup files
 # The rebuild often complains about these files existing.
