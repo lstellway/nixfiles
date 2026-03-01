@@ -22,7 +22,6 @@
     buf
     # @see https://bun.sh
     bun
-    chezmoi
     # @see https://cilium.io
     cilium-cli
     # Google's CLI tool for managing container images

@@ -1,3 +1,6 @@
+" Fix clipboard for MacOS
+set clipboard=unnamed
+
 " Disable compatibility mode
 set nocompatible
 
