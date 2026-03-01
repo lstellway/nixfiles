@@ -1,44 +1,65 @@
-## NixOS host configurations
+## Nix / nix-darwin / Home Manager configuration
 
-My Nix configuration files!
+My Nix configuration files for macOS (Darwin).
+
+### Dependencies
+
+- [Nix](https://github.com/DeterminateSystems/nix-installer) (Determinate Systems installer)
+- [nix-darwin](https://github.com/LnL7/nix-darwin) — macOS system configuration
+- [Home Manager](https://nix-community.github.io/home-manager/) — user environment configuration
+
+Pinned to `nixos-25.11`.
 
 ### Installation
 
-**Install NixOS**
-
-Install NixOS using the [official NixOS installer](https://nix.dev/install-nix.html):
+**Install Nix**
 
 ```
 make deps
 ```
 
-**Darwin**
-
-Install Flake using [nix-darwin](https://github.com/LnL7/nix-darwin):
+**Initialize Darwin (first time only)**
 
 ```
-make init-darwin
+make darwin-init
 ```
 
-Rebuild Darwin machine configuration:
+**Rebuild Darwin configuration**
 
 ```
 make darwin
 ```
 
+**Update flake inputs** (e.g. when upgrading nixpkgs)
+
+```
+make darwin-update
+```
+
 ### Structure
 
-- `modules`
-    - `modules.nix` - helper for including modules in various contexts _(Darwin, NixOS, Home Manager, etc..)_
-    - `common` - shared OS-level modules
-    - `darwin` - modules specific to Darwin
-    - `nixos` - modules specific to NixOS
-    - `home-manager` - shared Home Manager modules
+- `flake.nix` — entry point; defines inputs and `darwinConfigurations` hosts
+- `modules/`
+    - `modules.nix` — auto-discovers and loads `.inc.nix` files per context
+    - `common/` — shared OS-level packages
+    - `darwin/` — Darwin system config (packages, fonts, system settings, scripts)
+    - `nixos/` — NixOS-specific packages _(no NixOS hosts currently configured)_
+    - `home-manager/` — per-user Home Manager modules:
+        - `fzf` — fuzzy finder
+        - `gh` — GitHub CLI
+        - `git` — git config
+        - `k9s` — Kubernetes TUI
+        - `shell` — zsh config and shell scripts (AWS, containers, git, Node, SSH, tmux, etc.)
+        - `ssh` — SSH client config
+        - `tmux` — tmux config
+        - `vim` — Neovim/Vim with plugins and init scripts
+
+### Hosts
+
+| Hostname | System           | Users   |
+| -------- | ---------------- | ------- |
+| `banana` | `aarch64-darwin` | `logan` |
 
 ### To do
 
-- [ ] `vim-darwin`
-    - Provides Darwin-specific features, like yank to clipboard
-- [ ] Configure git
-- [ ] SSH configuration?
-- [ ] GPG key management?
+- [ ] GPG key management

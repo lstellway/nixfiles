@@ -4,7 +4,6 @@ inputs: {
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true;
-  # environment.shells = with inputs.pkgs; [ zsh ];
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = ({ self, ... }: self.rev or self.dirtyRev or null) inputs;
@@ -53,6 +52,7 @@ inputs: {
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
+  # @see https://nix-darwin.github.io/nix-darwin/manual/index.html#opt-system.stateVersion
   system.stateVersion = 4;
 
   # The platform the configuration will be used on.
