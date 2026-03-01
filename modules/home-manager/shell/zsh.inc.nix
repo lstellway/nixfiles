@@ -24,6 +24,7 @@
         ./scripts/env.sh
         ./scripts/git.sh
         ./scripts/homebrew.sh
+        ./scripts/node.sh
         ./scripts/prompt.zsh
         ./scripts/ssh.sh
         ./scripts/terminal.sh

@@ -41,15 +41,20 @@
     ffmpeg
     # Cloudflare Go CLI
     flarectl
+    # Fast Node.js manager
+    # @see https://github.com/Schniz/fnm
+    fnm
     # File change monitor
     # @see https://github.com/emcrisostomo/fswatch
     fswatch
+    gemini-cli
     # GNU flavor of the `grep` CLI tool
     # @see https://www.gnu.org/software/grep/
     gnugrep
     # OpenGPG toolset for signing and encrypting
     # @see https://www.gnupg.org
     gnupg
+    google-cloud-sdk
     go
     # gRPC client from FullStory
     # @see https://github.com/fullstorydev/grpcurl
@@ -123,11 +128,12 @@
     # TuringPi CLI
     # @see https://github.com/turing-machines/tpi/tree/07e3bfe44b6be1f2607fd220798dfc7287322c70
     tpi
-    vim
     # Google's font compression
     # @see https://github.com/google/woff2
     woff2
-    xsv
+    # @see https://github.com/medialab/xan
+    xan
+    yq
     yt-dlp
     zoxide
     zsh
