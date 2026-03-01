@@ -19,16 +19,16 @@
     taps = [
       # "homebrew/core"
       # "homebrew/cask"
+      "dcmfx/tap"
       "lstellway/formulae"
-      "shopify/shopify"
     ];
 
     brews = [
       "acert"
+      "dcmfx"
       "mas"
       "mysql-client"
-      "shopify/shopify/shopify-cli"
-      "shopify/shopify/themekit"
+      "ollama"
       # "watchman"
     ];
 
@@ -53,6 +53,7 @@
       "keepassxc"
       "lm-studio"
       "macfuse"
+      "mongodb-compass"
       # "microsoft-teams"
       "notion"
       "obs"
@@ -64,10 +65,11 @@
       "rectangle"
       "slack"
       # "tabula"
-      "tailscale"
+      "tailscale-app"
       "transmit"
       "vscodium"
       "vlc"
+      "zen"
     ];
 
     masApps = {
