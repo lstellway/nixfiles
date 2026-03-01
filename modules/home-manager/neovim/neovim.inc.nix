@@ -9,6 +9,7 @@
         ./init/keymaps.lua
         ./init/lsp.lua
         ./init/plugins.lua
+        ./init/markdown.lua
       ]
     );
     plugins = with pkgs.vimPlugins; [
@@ -36,6 +37,13 @@
 
       # Ledger (no Lua alternative)
       vim-ledger
+
+      # Markdown
+      render-markdown-nvim
+      (nvim-treesitter.withPlugins (p: [
+        p.markdown
+        p.markdown_inline
+      ]))
     ];
     extraPackages = with pkgs; [
       gopls
