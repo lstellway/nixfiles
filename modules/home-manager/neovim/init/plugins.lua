@@ -3,6 +3,12 @@ local telescope = require("telescope")
 telescope.setup({
   defaults = {
     file_ignore_patterns = { "^%.git/" },
+    mappings = {
+      i = {
+        ["<C-j>"] = "move_selection_next",
+        ["<C-k>"] = "move_selection_previous",
+      },
+    },
   },
   pickers = {
     live_grep = {

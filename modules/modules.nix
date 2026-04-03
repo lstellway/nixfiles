@@ -1,4 +1,15 @@
-# This file exports an attribute set with modules intended to be included in different contexts.
+# Module auto-discovery engine.
+#
+# This file exports lists of .inc.nix file paths, grouped by context
+# (common, darwin, nixos, home-manager). Any file ending in .inc.nix
+# within these directories is automatically found and included —
+# no manual import list needed.
+#
+# To add a new module: create a .inc.nix file in the appropriate
+# context directory. It will be picked up on the next rebuild.
+#
+# Files named default.nix are NOT auto-discovered — they serve as
+# explicit entry points.
 inputs:
 
 with inputs.nixpkgs.lib; let

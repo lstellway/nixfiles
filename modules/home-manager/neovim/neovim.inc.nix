@@ -1,8 +1,12 @@
+# Neovim configuration — see README.md in this directory for details.
+# Plugins are installed via Nix; configuration is written in Lua.
 { pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    # Lua config files are concatenated in order: general options first,
+    # then keymaps, LSP, plugins, and filetype-specific config last.
     extraLuaConfig = pkgs.lib.concatStrings (
       map (script: (pkgs.lib.readFile script) + "\n") [
         ./init/options.lua

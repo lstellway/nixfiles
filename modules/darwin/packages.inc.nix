@@ -1,3 +1,9 @@
+# GUI applications are installed via Homebrew so they appear in /Applications
+# and are available via Spotlight search. Nix-installed .app bundles don't
+# integrate well with Spotlight on macOS.
+# @see https://github.com/NixOS/nix/issues/7055
+#
+# CLI tools go in common/packages.inc.nix via Nix instead.
 { lib, pkgs, ... }: {
   # Homebrew configuration
   # @see https://daiderd.com/nix-darwin/manual/index.html#opt-homebrew.enable
@@ -39,6 +45,8 @@
     casks = [
       # "anytype"
       "asana"
+      "claude"
+      "claude-code"
       "cursor"
       "discord"
       # "docker"

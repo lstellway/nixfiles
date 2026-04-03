@@ -1,3 +1,10 @@
+# Home Manager integration with nix-darwin.
+#
+# This module creates per-user Home Manager configurations from the `users`
+# attribute set passed via flake inputs. Each user gets the same set of
+# home-manager modules (shell, git, neovim, etc.) applied to their home
+# directory. The modules themselves are auto-discovered from this directory
+# (any .inc.nix file).
 inputs:
 let
   modules = import ../modules.nix inputs;
@@ -8,7 +15,7 @@ in
     PAGER = "less";
   };
 
-  # Declare OS users
+  # Declare OS users from the `users` attrset defined in flake.nix
   users.users = builtins.mapAttrs (name: user: {pkgs, ...}: {
     name = name;
     home = user.directory;
@@ -17,9 +24,10 @@ in
   # Backup file extension used when backing up existing program configuration files.
   home-manager.backupFileExtension = "backup";
 
-  # Configure home manager
+  # Use the same nixpkgs and package set as the system configuration
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+  # Map each user from flake inputs to a Home Manager configuration
   home-manager.users = builtins.mapAttrs (name: user: {pkgs, ...}: {
     home.username = name;
     home.homeDirectory = user.directory;
