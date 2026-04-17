@@ -1,11 +1,14 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+{
   # Allow installation of proprietary applications
   nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "packer"
-      "terraform"
-      # "teams"
-    ];
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "packer"
+        "terraform"
+        # "teams"
+      ];
   };
 
   # List packages installed in system profile. To search by name, run:
@@ -98,6 +101,8 @@
     protobuf
     protoc-gen-go
     protoc-gen-go-grpc
+    # QR encoding library
+    qrtool
     # see https://rclone.org
     rclone
     # CLI app using Mozilla's Readability library
@@ -109,7 +114,8 @@
     # Extension of Ripgrep with the ability to search binary file formats (PDF, etc..)
     # @see https://github.com/phiresky/ripgrep-all
     ripgrep-all
-    rustc cargo
+    rustc
+    cargo
     # Code static analysis
     # @see https://semgrep.dev
     semgrep
