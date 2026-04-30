@@ -30,6 +30,7 @@
     # Google's CLI tool for managing container images
     # @see https://github.com/google/go-containerregistry/blob/55ffb0092afd1313edad861a553b4fcea21b4da2/cmd/crane/doc/crane.md
     crane
+    deno
     # Tool to help automate shell environments based on the working directory
     # @see https://direnv.net
     direnv
