@@ -4,7 +4,8 @@
 # @see https://github.com/NixOS/nix/issues/7055
 #
 # CLI tools go in common/packages.inc.nix via Nix instead.
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+{
   # Homebrew configuration
   # @see https://daiderd.com/nix-darwin/manual/index.html#opt-homebrew.enable
   homebrew = {
@@ -63,6 +64,7 @@
       "macfuse"
       "mongodb-compass"
       # "microsoft-teams"
+      "netnewswire"
       "notion"
       "obs"
       # "openoffice"
