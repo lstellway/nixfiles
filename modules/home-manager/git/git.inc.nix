@@ -17,7 +17,8 @@
       user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPsof9uDWnEEKaxOQUJmsYfprt4d556JqEgKwKNJCaiq";
       init.defaultBranch = "main";
       # Rebase on pull to keep a linear history
-      pull.rebase = true;
+      pull.ff = "only";
+      # pull.rebase = true;
       # Automatically set upstream when pushing a new branch
       push.autoSetupRemote = true;
     };
