@@ -1,5 +1,5 @@
 ---
-name: review
+name: code-review
 description: Multi-agent code review skill. Fans out to specialist agents in parallel and aggregates findings into a unified prioritized report. Use for PR review, file review, design review, or audits.
 ---
 
