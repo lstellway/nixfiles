@@ -33,6 +33,8 @@ make darwin-backup     # Backup /etc shell configs that conflict with nix-darwin
 
 **Shell scripts:** Not auto-discovered — must be manually listed in `zsh.inc.nix`. See `modules/home-manager/shell/README.md`.
 
+**Claude Code assets:** `modules/home-manager/claude/` holds user-scoped agents (`agents/`) and skills (`skills/`). `claude.inc.nix` symlinks these into `~/.claude/` via `mkOutOfStoreSymlink`, so edits in the repo take effect immediately without a rebuild. `settings.json`, `plugins/`, and runtime state (sessions, history, cache) are intentionally unmanaged.
+
 **Homebrew vs Nix:** GUI apps go in Homebrew (`darwin/packages.inc.nix`) for Spotlight integration. CLI tools go in Nix (`common/packages.inc.nix`).
 
 ## Conventions
