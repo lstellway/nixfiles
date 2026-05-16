@@ -29,7 +29,8 @@ Before writing anything, understand the scope:
 - What are the major version lines in active use? Is there a version split that would produce materially different answers (e.g., Postgres 14 vs. 16, Kubernetes 1.27 vs. 1.30)?
 - What ecosystem does it sit in — standalone tool, part of a larger platform, multiple integrations?
 - Are there common adjacent tools the agent will frequently reference (e.g., Postgres + pgvector, Kubernetes + Helm)?
-- Search https://github.com/VoltAgent/awesome-claude-code-subagents for any existing agents covering this technology. Note what was found and what was not adopted, and why.
+- **Does the technology span multiple distinct sub-ecosystems?** Examples: WordPress = classic PHP + Gutenberg/JS + REST + WP-CLI; Kubernetes = core + Helm + operators; a database = engine + client libraries + ops tooling. If yes, plan to sub-section Core Concepts AND the Documentation Sources table by sub-domain rather than flattening. The Approach section will then branch by sub-domain plus orthogonal cross-cutting concerns (versioning, debugging). See Step 6 for the structural variant.
+- **Scope sanity check, not content source.** Search community agent indexes (e.g., https://github.com/VoltAgent/awesome-claude-code-subagents) only to confirm scope decisions — what others cover, what they split or combine. Do NOT inherit their content, workflow framing, or persona archetype. Many community agents use a checklist/protocol archetype that conflicts with this skill's "fetch-first expert answerer" voice. Note what was found and why it was or wasn't useful as a scope reference.
 
 ### Step 2 — Map query types to authoritative sources
 
@@ -48,6 +49,9 @@ For each type of question a user might ask about this technology, identify the s
 | [e.g., Community patterns / cookbook] | [URL] |
 
 Rules for this table:
+- **Use Context7 as the default top row** for any technology with a Context7 index. Call `mcp__context7__resolve-library-id` to discover the library ID, then `mcp__context7__query-docs` for retrieval. Context7 indexes are usually the fastest path to current, version-pinned documentation snippets in an LLM-targeted format. Try both index types and pick the better fit (or list both):
+    - `/websites/<name>_dev_reference_<name>` — best for API reference, function signatures, configuration keys
+    - `/<org>/<project>/v<X>` — best for changelogs and version-pinned source/snippet retrieval (the version label in the library ID enables reproducible re-survey later)
 - Prefer official documentation over community wikis where both exist
 - Prefer versioned URLs over `latest` where available (so the agent can target a specific version)
 - If an option set is large (e.g., NixOS options, Home Manager options), note that the agent should search by keyword at the URL rather than browsing
@@ -152,6 +156,14 @@ Fetch from these sources when precision matters. [Note which types of question a
 
 Always cite which version of <technology> a behavior applies to when it is version-sensitive. Every response must be grounded in fetched documentation or embedded knowledge — no unverified assertions about option names, API signatures, or command behavior.
 ```
+
+**Variant for broad-surface technologies** (identified in Step 1): if the tech spans multiple distinct sub-ecosystems, restructure all three central sections by sub-domain:
+
+- **Documentation Sources table** — group rows by sub-domain, using sub-headings or repeated header rows so users can scan to the right ecosystem before locating the specific source. Cross-cutting sources (e.g., security docs that span sub-domains) get their own group.
+- **Core Concepts** — `### [Sub-domain]` headings as the top-level structure (e.g., "Classic Theme Development", "Block Editor", "REST API"), each containing the sub-domain's own concept areas as `####` subheadings.
+- **Approach** — one paragraph per sub-domain covering its task strategies, then orthogonal paragraphs for cross-cutting concerns (version-sensitivity, debugging across sub-domains, choosing between sub-domain options for a given problem).
+
+The broad-surface variant accepts a longer agent file in exchange for keeping the central artifacts scannable; flattening a multi-sub-ecosystem tech into a single table and concept list makes both unusable as references.
 
 **Persona frame**: the technology agent persona combines two things — deep expertise (so the agent reasons confidently about fundamentals) and fetch-first discipline (so the agent doesn't hallucinate option names or API signatures from stale training data). Both are necessary: deep expertise without fetch discipline produces confident wrong answers; fetch discipline without expertise produces correct but context-free lookups.
 
