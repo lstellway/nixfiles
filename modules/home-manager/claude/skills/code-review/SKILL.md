@@ -1,67 +1,16 @@
 ---
 name: code-review
-description: Multi-agent code review skill. Fans out to specialist agents in parallel and aggregates findings into a unified prioritized report. Use for PR review, file review, design review, or audits.
+description: Multi-agent code review skill. Selects relevant specialist agents based on the target, confirms the set with the user, fans out in parallel, and aggregates findings into a unified prioritized report.
 ---
 
 ## Overview
 
-This skill accepts a review target and optional configuration, dispatches selected specialist agents in parallel, then aggregates their outputs into a single prioritized report.
-
----
-
-## Input Parsing
-
-Parse the invocation arguments as follows:
-
-**Target** (required): The first non-flag argument. Can be:
-- A file path (e.g., `src/auth/login.ts`)
-- A PR number or GitHub URL
-- A natural-language description of what to review
-- Omitted → ask the user what to review before proceeding
-
-**Flags**:
-- `--agents <list>`: Comma-separated short names of agents to invoke (e.g., `--agents security,testing,code-quality`). Overrides the default set.
-- `--all`: Invoke all 16 `software-*` agents. Takes precedence over `--agents`.
-- `--mode <mode>`: Task mode — `pr-review` (default), `design`, or `audit`. Passed through to each agent as context.
-
-**If no target is provided**: Ask the user "What would you like me to review?" before dispatching any agents.
-
----
-
-## Agent Registry
-
-### Default set (7 agents)
-
-| Short name             | Agent name                    |
-|------------------------|-------------------------------|
-| `architecture`         | Software Architecture         |
-| `api-design`           | Software API Design           |
-| `security`             | Software Security             |
-| `testing`              | Software Testing              |
-| `code-quality`         | Software Code Quality         |
-| `performance`          | Software Performance          |
-| `dependency-management`| Software Dependency Management|
-
-### Full set (all 16 `software-*` agents)
-
-| Short name             | Agent name                    |
-|------------------------|-------------------------------|
-| `accessibility`        | Software Accessibility        |
-| `api-design`           | Software API Design           |
-| `architecture`         | Software Architecture         |
-| `code-quality`         | Software Code Quality         |
-| `compliance`           | Software Compliance           |
-| `data-integrity`       | Software Data Integrity       |
-| `data-privacy`         | Software Data Privacy         |
-| `dependency-management`| Software Dependency Management|
-| `devops`               | Software DevOps               |
-| `logging-auditing`     | Software Logging & Auditing   |
-| `observability`        | Software Observability        |
-| `performance`          | Software Performance          |
-| `reliability`          | Software Reliability          |
-| `security`             | Software Security             |
-| `testing`              | Software Testing              |
-| `user-experience`      | Software User Experience      |
+This skill reviews a target by:
+1. Resolving what the user wants reviewed (clarifying if unclear)
+2. Proposing a set of specialist agents whose expertise applies
+3. Confirming the proposed set with the user
+4. Fanning out to the confirmed agents in parallel
+5. Aggregating findings into a single prioritized report
 
 ---
 
@@ -69,40 +18,60 @@ Parse the invocation arguments as follows:
 
 ### 1. Resolve target
 
-If the target is a file path, read the file contents to pass as context. If it is a PR number, fetch the diff. If it is a description, use it as-is.
+Parse the user's input to determine what they want reviewed. The target may be code, a diff, a proposed design, an existing system, or anything else the user wants feedback on.
 
-### 2. Determine agent set
+If the target is missing or ambiguous, ask the user to clarify before proceeding.
 
-- If `--all` is present: use all 16 agents from the full set.
-- If `--agents <list>` is present: use only the named agents from the registry. Warn about any unrecognized names and skip them.
-- Otherwise: use the 7-agent default set.
+For concrete targets (files, PRs), gather the content (read the file, fetch the diff) before proposing agents so the proposal is informed by what the target actually contains.
 
-Note expected duration: "Running N agents in parallel — this may take a minute."
+### 2. Propose agents
 
-### 3. Fan out in parallel
+Scan the agents available in this session — including domain agents (`Software *`) and technology agents (`Technology *`) — and select those whose expertise plausibly applies to the target.
 
-Invoke all selected agents simultaneously in a **single parallel Agent tool call** (all `Agent` invocations in one message). Do not call agents sequentially.
+Selection guidance:
+- Default to a baseline of broad-coverage domain agents (e.g., security, code quality, testing, architecture) for any code review.
+- Add specialist domain agents based on what the target touches (e.g., accessibility for UI, data privacy for PII handling, observability for instrumentation, reliability for failure-mode-sensitive code).
+- Add technology agents based on file types, frameworks, or stack hints visible in the target (e.g., the Terraform agent for `.tf` files; the React agent for `.tsx` files; the Kubernetes agent for manifests).
+- For proposed designs (vs. implemented code), favor architecture- and API-design-focused agents over implementation-focused ones like testing or performance.
+- Err on the side of inclusion when uncertain — the user will prune in the next step.
 
-Each agent receives this prompt:
+### 3. Confirm with user
+
+Present the proposed agent set as a text reply, briefly noting why each was chosen. Wait for the user to confirm or adjust before dispatching.
+
+Honor any natural-language modification — for example:
+- "drop devops and dependency-management"
+- "add accessibility"
+- "just security and testing"
+- "yes" / "looks good" / "go"
+
+Do not dispatch agents until the user has explicitly confirmed. There is no opt-out for this step.
+
+### 4. Fan out in parallel
+
+Once confirmed, announce dispatch briefly ("Running N agents in parallel — this may take a minute.") and invoke all selected agents simultaneously in a **single parallel Agent tool call** (all `Agent` invocations in one message). Do not call agents sequentially.
+
+Phrase each agent's prompt to match the target type:
+- For existing code or a PR diff: "Review the following code."
+- For a proposed design or description: "Evaluate the following proposed design."
+
+Prompt template:
 
 ```
-You are performing a <MODE> review. Below is the review target.
+You are performing a code review. Below is the review target.
 
-**Mode**: <mode>
-**Target**: <target description or file path>
+**Target**: <description, file path, or PR identifier>
 
-<target content or diff>
+<target content, diff, or description>
 
 Apply your domain expertise. Follow your standard output format:
 - If this target does not touch your domain, state that explicitly as your first line: "No findings — this target does not touch [domain]."
 - Otherwise: domain-specific sections → Findings (each tagged [Critical], [High], [Medium], or [Info]) → What's Working → Questions
 ```
 
-### 4. Collect outputs
+### 5. Aggregate
 
 Wait for all agents to return. Note which agents returned "No findings" vs. which returned substantive output.
-
-### 5. Aggregate
 
 Produce the unified report following these rules:
 
@@ -123,7 +92,7 @@ Produce the unified report following these rules:
 ```markdown
 ## Review: <target>
 
-**Mode**: <mode> | **Agents**: <N> invoked (<M> with findings, <K> no findings)
+**Agents**: <N> invoked (<M> with findings, <K> no findings)
 
 ---
 
