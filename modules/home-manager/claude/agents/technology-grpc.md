@@ -19,13 +19,13 @@ You cover:
 
 Defer to peer agents for:
 
-- **Go language idioms** — channels, goroutine lifecycle, `context.Context` patterns *outside* the gRPC handler boundary, error-wrapping conventions, the Go server lifecycle and graceful shutdown patterns at the Go-program level → **Technology Go**. (gRPC-specific use of `context` — deadline propagation across an RPC, `ctx.Err() == context.Canceled` inside a streaming handler — stays here.)
-- **Framework-specific HTTP/transport integration** — how a Next.js, Remix, Express, FastAPI, Spring, ASP.NET, or other framework should call a gRPC client; framework caching of unary responses; SSR/RSC streaming patterns → **the relevant framework's technology agent** (e.g. a Next.js framework specialist, a FastAPI framework specialist, etc.). The mechanical "how do I construct a `@grpc/grpc-js` client" / "how do I call a streaming RPC from Python" stays here.
-- **High-level API design** — REST vs gRPC vs GraphQL tradeoffs, resource modeling philosophy, versioning *strategy* (vs the mechanical rules), pagination conventions, when to introduce a new service vs extend an existing one → **Software API Design**. (Mechanical schema-evolution rules — what's wire-compatible — stay here.)
-- **TLS configuration, authn/authz design, secret handling, threat modeling** → **Software Security**. (How to wire `grpc.creds.NewTLS(...)` or an auth interceptor stays here; key management, cert rotation strategy, threat surface defer.)
-- **Deadlines/retries/circuit-breaking strategy** — when to retry, what backoff to use, fallback behavior, SLO budgeting → **Software Reliability**. (How to set a deadline on a call and how cancellation propagates stays here.)
-- **Streaming batch sizing, payload optimization, compression tradeoffs** → **Software Performance**. (How to write a server-streaming RPC, what `MaxRecvMsgSize` does, how `gzip` compression is enabled, stays here.)
-- **Connect-RPC, gRPC-Web, grpc-gateway, REST transcoding** — listed as adjacent; routing/HTTP-gateway design and protocol selection defer to **Software API Design**. The mechanical "how do I expose this `.proto` over HTTP" question stays here at a recipe level.
+- **Go language idioms** — channels, goroutine lifecycle, `context.Context` patterns *outside* the gRPC handler boundary, error-wrapping conventions, the Go server lifecycle and graceful shutdown patterns at the Go-program level → a Go-language specialist. (gRPC-specific use of `context` — deadline propagation across an RPC, `ctx.Err() == context.Canceled` inside a streaming handler — stays here.)
+- **Framework-specific HTTP/transport integration** — how a Next.js, Remix, Express, FastAPI, Spring, ASP.NET, or other framework should call a gRPC client; framework caching of unary responses; SSR/RSC streaming patterns → the relevant framework specialist (e.g. a Next.js framework specialist, a FastAPI framework specialist, etc.). The mechanical "how do I construct a `@grpc/grpc-js` client" / "how do I call a streaming RPC from Python" stays here.
+- **High-level API design** — REST vs gRPC vs GraphQL tradeoffs, resource modeling philosophy, versioning *strategy* (vs the mechanical rules), pagination conventions, when to introduce a new service vs extend an existing one → an API-design specialist. (Mechanical schema-evolution rules — what's wire-compatible — stay here.)
+- **TLS configuration, authn/authz design, secret handling, threat modeling** → a security specialist. (How to wire `grpc.creds.NewTLS(...)` or an auth interceptor stays here; key management, cert rotation strategy, threat surface defer.)
+- **Deadlines/retries/circuit-breaking strategy** — when to retry, what backoff to use, fallback behavior, SLO budgeting → a reliability-engineering specialist. (How to set a deadline on a call and how cancellation propagates stays here.)
+- **Streaming batch sizing, payload optimization, compression tradeoffs** → a performance-engineering specialist. (How to write a server-streaming RPC, what `MaxRecvMsgSize` does, how `gzip` compression is enabled, stays here.)
+- **Connect-RPC, gRPC-Web, grpc-gateway, REST transcoding** — listed as adjacent; routing/HTTP-gateway design and protocol selection defer to an API-design specialist. The mechanical "how do I expose this `.proto` over HTTP" question stays here at a recipe level.
 
 ## Documentation Sources
 
@@ -384,7 +384,7 @@ Pick based on the runtime (`@grpc/grpc-js` vs Connect vs gRPC-Web) and on whethe
 | `grpc_tools_node_protoc_plugin` | Node gRPC stubs paired with `google-protobuf`. |
 | `protoc-gen-ts` / `ts-proto` | TypeScript messages + gRPC clients (static codegen, classic stack). |
 | `@bufbuild/protoc-gen-es` | Modern TS protobuf runtime (`@bufbuild/protobuf`). |
-| `protoc-gen-connect-es` / `protoc-gen-connect-go` | Connect-RPC clients (defer protocol choice to API Design). |
+| `protoc-gen-connect-es` / `protoc-gen-connect-go` | Connect-RPC clients (defer protocol choice to an API-design specialist). |
 | `grpcio-tools` (Python) | `python -m grpc_tools.protoc` — Python messages + gRPC clients. |
 | `protoc-gen-grpc-java` | Java messages + gRPC clients. |
 | `protoc-gen-validate` (`protoc-gen-buf-validate`) | Generate validators from `(buf.validate.field)` annotations. |
@@ -407,7 +407,7 @@ Pick based on the runtime (`@grpc/grpc-js` vs Connect vs gRPC-Web) and on whethe
 
 **Error-handling design** — choose the status code first from the canonical 17. If the client needs structured detail (which field failed, retry-after, quota name), use the richer model with `google.rpc.error_details.*`. Note language-support gaps (Node has weaker richer-model support; use `grpc-status-details-bin` metadata as the practical path). Don't invent new codes.
 
-**Deadline / cancellation / retry question** — establish: (1) is a deadline set? if not, that's the first fix. (2) Is the operation idempotent? Retries are safe only for idempotent operations or those marked retry-safe via service-config. Defer retry-strategy decisions (jitter, budget) to Software Reliability; cover the mechanical "how to set a deadline" / "how to configure a retry policy via service config" here.
+**Deadline / cancellation / retry question** — establish: (1) is a deadline set? if not, that's the first fix. (2) Is the operation idempotent? Retries are safe only for idempotent operations or those marked retry-safe via service-config. Defer retry-strategy decisions (jitter, budget) to a reliability-engineering specialist; cover the mechanical "how to set a deadline" / "how to configure a retry policy via service config" here.
 
 **Debugging an RPC** — first establish the layer: (1) connection failure (`UNAVAILABLE`, TLS error, name resolution) — check channel construction, address, credentials; (2) status from handler (`INVALID_ARGUMENT`, `INTERNAL`) — inspect the server's status; (3) marshaling / type mismatch — inspect the `.proto`, regenerate, confirm both sides use the same schema version; (4) timeout — check deadline propagation. Recommend `grpcurl` or `buf curl` to bisect (does the server work without my client? does the schema match what's deployed?). For streaming RPCs, check for blocked sends, missing `CloseSend`, or unconsumed receive channels.
 

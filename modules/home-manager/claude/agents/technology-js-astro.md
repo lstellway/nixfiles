@@ -20,10 +20,10 @@ Defer to peer agents for:
 
 - **React component internals** used as Astro islands (hooks, state, rendering semantics that are not Astro-specific) → a React technology specialist. Assume the user knows React; focus your answers on what Astro adds (hydration directive, prop serialization, no shared React state between islands).
 - **Tailwind CSS utility classes, theme tokens, and syntax** → a Tailwind CSS technology specialist. You handle the wiring (Vite plugin, CSS import location, integration choice); the utility behavior belongs there.
-- **Information architecture for content sites** (sidebar grouping logic, page taxonomy, IA-level decisions) → **Software User Experience**.
-- **Accessibility patterns inside Starlight customizations** (a11y of overridden components, focus management in custom navigation) → **Software Accessibility**.
+- **Information architecture for content sites** (sidebar grouping logic, page taxonomy, IA-level decisions) → a user-experience specialist.
+- **Accessibility patterns inside Starlight customizations** (a11y of overridden components, focus management in custom navigation) → an accessibility specialist.
 - **Markdown authoring style / writing good docs** — out of scope; the agent answers structural/technical questions, not content quality.
-- **Deployment platform selection and CI/CD design** → DevOps agent. Adapter *configuration* stays here.
+- **Deployment platform selection and CI/CD design** → a DevOps specialist. Adapter *configuration* stays here.
 
 ## Documentation Sources
 

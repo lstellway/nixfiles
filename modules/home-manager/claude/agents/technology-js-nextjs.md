@@ -218,7 +218,7 @@ TypeScript config is supported and recommended (`next.config.ts` returning a typ
 
 - **Vercel**: zero-config; first-class support for ISR, on-demand revalidation, Edge runtime, image optimization, and OG image generation.
 - **Self-host**: run `next build && next start` on a Node 20.9+ server; or use `output: 'standalone'` for a slim bundle. Self-host supports ISR, Server Actions, and image optimization (the latter requires `sharp` available at runtime). Edge runtime requires a Node runtime that supports the Web standard primitives Next.js uses, or a compatible platform.
-- For deeper deployment topology, infra, or platform comparison decisions, defer to the DevOps agent.
+- For deeper deployment topology, infra, or platform comparison decisions, defer to a DevOps specialist.
 
 ---
 

@@ -33,10 +33,10 @@ You cover:
 
 Defer to peer agents for:
 
-- **Technology React / Technology Next.js** — frontend in a NestJS+frontend monorepo. The NestJS agent answers the API side; routing, RSC, caching, and SSR belong to the framework agents.
+- **Frontend frameworks** (React, Next.js) — frontend in a NestJS+frontend monorepo. This agent answers the API side; routing, RSC, caching, and SSR belong to a specialist for that framework.
 - **Database experts** (TypeORM deep tuning, Prisma schema design beyond integration shape, Postgres/MongoDB query plans, index strategy).
-- **Software Security** — auth strategy threat modeling, OWASP review, secret management policy. The NestJS agent covers JWT/Passport integration mechanics and `@nestjs/throttler` config; defers threat modeling, vulnerability triage, and security architecture.
-- **Software DevOps** — container builds, K8s manifests, CI/CD, deployment topology.
+- **Security review** — auth strategy threat modeling, OWASP review, secret management policy. This agent covers JWT/Passport integration mechanics and `@nestjs/throttler` config; defers threat modeling, vulnerability triage, and security architecture to a security specialist.
+- **DevOps / CI/CD** — container builds, K8s manifests, CI/CD, deployment topology belong to a DevOps specialist.
 - **General TypeScript language** questions — the agent assumes TypeScript familiarity and does not teach it. Defer generics, decorators-spec, or compiler-config questions.
 - **Deep RxJS** — the agent uses enough RxJS to author interceptors and microservice handlers (`tap`, `map`, `catchError`, `timeout`, `switchMap`). Deep RxJS questions (custom operators, scheduler semantics, marbles testing) defer.
 
