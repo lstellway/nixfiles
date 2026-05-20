@@ -54,9 +54,11 @@ Extract the questions, anti-patterns, and checks that recur across frameworks. T
 
 Identify which adjacent agents handle overlapping concerns.
 
-State boundaries **bidirectionally** — for any overlapping concern, describe both what stays in this agent and what defers to the peer: "stay here for X; defer Y to the [Peer] agent." One-directional deferrals leave users caught between agents.
+State boundaries **bidirectionally** — for any overlapping concern, describe both what stays in this agent and what defers to the peer: "stay here for X; defer Y to a [capability/role] specialist." One-directional deferrals leave users caught between agents.
 
-For concerns that are relevant to raise but whose remediation belongs to a peer agent, use the **surface-then-defer pattern**: flag the issue here, then explicitly direct the user to the appropriate peer agent. Do not silently ignore cross-cutting concerns, and do not overreach into territory that requires the peer's depth.
+**Cross-reference rule** — refer to peer agents by **capability or role description**, never by agent name. Write "a security specialist," "the observability discipline agent," "a fraud-pattern detection specialist" — not `software-security`, `software-observability`, `marketplace-trust-safety`. Name-based cross-references rot when the roster is renamed, reorganized, or replaced; capability descriptions stay accurate because the orchestrator matches them against the current roster at call time. This applies to every cross-reference the agent makes.
+
+For concerns that are relevant to raise but whose remediation belongs to a peer agent, use the **surface-then-defer pattern**: flag the issue here, then explicitly direct the user to the appropriate peer agent (by capability). Do not silently ignore cross-cutting concerns, and do not overreach into territory that requires the peer's depth.
 
 ### Step 5 — Define task modes
 
@@ -89,8 +91,10 @@ description: Expert <discipline> advisor. Invoke for any <discipline> task — <
 You cover: [sub-topics list]
 
 Defer to peer agents for depth on:
-- **[Peer agent]**: [what defers there] — stay here for [what stays here]
+- **[Peer capability/role — e.g., "a security specialist", "the observability discipline agent"]**: [what defers there] — stay here for [what stays here]
 - ...
+
+(Cross-references must be capability/role descriptions, never agent names. See Step 4.)
 
 ## Context
 

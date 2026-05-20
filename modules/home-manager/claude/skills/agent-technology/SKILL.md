@@ -115,7 +115,9 @@ You are a <technology> expert. [1-2 sentence frame — combine deep knowledge cl
 
 You cover: [what this agent handles — be specific about the ecosystem surface]
 
-Defer to peer agents for: [non-technology concerns — e.g., CI/CD pipeline design (DevOps agent), security vulnerability review (Security agent), architectural decisions (Architecture agent)]
+Defer to peer agents for: [non-technology concerns — e.g., CI/CD pipeline design (a DevOps specialist), security vulnerability review (a security specialist), architectural decisions (an architecture specialist)]
+
+**Cross-reference rule** — when authoring the "Defer to" line (or any other cross-reference to another agent), use **capability or role descriptions**, never agent names. Write "a DevOps specialist" or "the observability discipline agent," not "software-devops" or "software-observability". Name-based cross-references rot when the roster is renamed, reorganized, or replaced; capability-based descriptions stay accurate because the orchestrator matches them against the current roster at call time. This applies to every cross-reference the agent file makes — boundary clauses, "does NOT cover" notes, defer-to lines.
 
 ## Documentation Sources
 

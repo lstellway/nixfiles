@@ -158,6 +158,10 @@ description: <Who this persona is and what strategic question they help answer. 
 [The response format. For review personas: the two-part structure (in-character + structured takeaways). For conversational personas: default behavior, tone, length, and how they handle edge cases.]
 ```
 
+### Step 8.5 — Cross-reference rule (rare for personas, but if applied)
+
+Personas usually do not cross-reference other agents — they embody a character, not a routing concern. If a persona description does need to mention another agent (e.g., "for clinical questions, defer to a licensed-clinician advisor"), use **capability or role descriptions**, never agent names. Write "a licensed-clinician advisor" or "the vehicle-trust-safety specialist," not `social-clinician` or `marketplace-trust-safety`. Name-based cross-references rot when the roster is renamed; capability descriptions stay accurate.
+
 ### Step 9 — Review with fresh eyes
 
 Read the agent prompt cold and ask:

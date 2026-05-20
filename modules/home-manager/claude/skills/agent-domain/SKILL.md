@@ -76,13 +76,15 @@ Compose each knowledge section from three kinds of content:
 
 Identify which adjacent agents handle overlapping concerns.
 
-State boundaries **bidirectionally** — for any overlap, describe both what stays in this agent and what defers to the peer: "stay here for X; defer Y to the [Peer] agent." One-directional deferrals strand the user between agents.
+State boundaries **bidirectionally** — for any overlap, describe both what stays in this agent and what defers to the peer: "stay here for X; defer Y to a [capability/role] specialist." One-directional deferrals strand the user between agents.
 
-Examples within a marketplace family:
-- `marketplace-auction-design` ↔ `marketplace-trust-safety` — auction-design stays with mechanism choices (reserve, anti-snipe, increments); defers fraud-pattern detection and account abuse to trust-safety. Trust-safety defers to auction-design on whether a rule change introduces a gameable mechanism.
-- `vehicle-provenance-title` ↔ `vehicle-pre-purchase-inspection` — provenance stays with documentary chain of custody (titles, history reports, recall registries); defers mechanical condition assessment to PPI. PPI defers to provenance on whether a discovered modification flags a salvage/rebuilt-title history.
+**Cross-reference rule** — refer to peer agents by **capability or role description**, never by agent name. Write "a fraud-pattern detection specialist" or "the title/provenance specialist," not `marketplace-trust-safety` or `vehicle-provenance-title`. Name-based cross-references rot when the roster is renamed, reorganized, or replaced; capability descriptions stay accurate because the orchestrator matches them against the current roster at call time. This applies to every cross-reference the agent makes — boundary clauses, "does NOT cover" notes, defer-to lines.
 
-For concerns relevant to surface but whose remediation belongs to a peer agent, use the **surface-then-defer pattern**: raise the issue here, then direct the user explicitly to the appropriate peer agent. Do not silently ignore cross-cutting concerns, and do not overreach into a peer's depth.
+Examples within a marketplace family (capability form):
+- **An auction-design specialist** ↔ **a fraud-pattern / trust-safety specialist** — auction-design stays with mechanism choices (reserve, anti-snipe, increments); defers fraud-pattern detection and account abuse to the trust-safety specialist. The trust-safety specialist defers to auction-design on whether a rule change introduces a gameable mechanism.
+- **A title/provenance specialist** ↔ **a pre-purchase inspection specialist** — provenance stays with documentary chain of custody (titles, history reports, recall registries); defers mechanical condition assessment to the inspection specialist. The inspection specialist defers to provenance on whether a discovered modification flags a salvage/rebuilt-title history.
+
+For concerns relevant to surface but whose remediation belongs to a peer agent, use the **surface-then-defer pattern**: raise the issue here, then direct the user explicitly to the appropriate peer agent (by capability). Do not silently ignore cross-cutting concerns, and do not overreach into a peer's depth.
 
 ### Step 5 — Define consultation modes
 
@@ -127,8 +129,10 @@ tools: Read, Glob, WebFetch       # default for knowledge agents; expand only if
 You cover: [sub-topics list — specific enough that a peer agent's claim on a boundary is unambiguous]
 
 Defer to peer agents for depth on:
-- **[Peer agent name]**: [what defers there] — stay here for [what stays here]
+- **[Peer capability/role — e.g., "a fraud-pattern detection specialist", "the title/provenance specialist"]**: [what defers there] — stay here for [what stays here]
 - ...
+
+(Cross-references must be capability/role descriptions, never agent names. See Step 4.)
 
 ## Context
 
