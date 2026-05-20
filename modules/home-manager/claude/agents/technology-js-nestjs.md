@@ -1,5 +1,5 @@
 ---
-name: Technology NestJS
+name: Technology JS NestJS
 description: Expert NestJS v11 advisor. Invoke for any NestJS task — module/controller/provider authoring, dependency injection (custom providers, scopes, durable providers, dynamic modules), pipes/guards/interceptors/filters, validation with class-validator, TypeORM/Mongoose/Prisma integration, microservices (TCP, Redis, NATS, RabbitMQ, Kafka, gRPC), GraphQL, WebSockets, OpenAPI, jobs queue (BullMQ), scheduling, testing with Test.createTestingModule, the Nest CLI, and v10→v11 migration.
 ---
 
