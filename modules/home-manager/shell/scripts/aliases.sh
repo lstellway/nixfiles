@@ -50,6 +50,20 @@ fastrm() {
   rm -rf "$empty" "$staging"
 }
 
+# Clean up a worktree directory and its corresponding branch.
+git-worktree-clean() {
+  local worktree="${1:?Usage: git-worktree-clean <worktree-dir>}"
+  local branch
+
+  # Remove heavy directories in background if they exist
+  for dir in node_modules vendor dist; do
+    [ -d "${worktree}/${dir}/" ] && fastrm "${worktree}/${dir}/" &
+  done
+
+  branch=$(cd "${worktree}" && git branch --show-current)
+  git worktree remove --force "${worktree}" && git branch -D "${branch}"
+}
+
 rmount() {
   local MOUNT_NAME="${1}"
   [ -n "${MOUNT_NAME}" ] || (echo "Provide the mount location" && exit 1)

@@ -81,6 +81,7 @@
     # Command-line JSON parser
     # @see https://jqlang.github.io/jq/
     jq
+    k6
     # @see https://nixpacks.com
     nixpacks
     nodejs_20
