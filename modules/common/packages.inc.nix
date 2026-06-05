@@ -66,6 +66,7 @@
     # Font conversion utility
     # @see https://github.com/kseo/sfnt2woff
     haskellPackages.sfnt2woff
+    # @see https://herder.dev
     hledger
     hledger-ui
     hledger-web
@@ -82,6 +83,8 @@
     # @see https://jqlang.github.io/jq/
     jq
     k6
+    # @see https://github.com/lycheeverse/lychee
+    lychee
     # @see https://nixpacks.com
     nixpacks
     nodejs_20
