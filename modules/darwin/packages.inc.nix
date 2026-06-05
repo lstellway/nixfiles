@@ -15,6 +15,11 @@
       upgrade = true;
       autoUpdate = true;
       cleanup = "zap";
+      # Issue with cleanup
+      # @see https://github.com/nix-darwin/nix-darwin/issues/1787
+      extraFlags = [
+        "--force-cleanup"
+      ];
     };
 
     global = {
@@ -33,6 +38,7 @@
     brews = [
       "acert"
       "dcmfx"
+      "herdr"
       "mas"
       "mysql-client"
       "ollama"
@@ -60,6 +66,7 @@
       "graphiql"
       "ireal-pro"
       "keepassxc"
+      "linear"
       "lm-studio"
       "macfuse"
       "mongodb-compass"
