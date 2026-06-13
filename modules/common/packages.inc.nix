@@ -87,8 +87,8 @@
     lychee
     # @see https://nixpacks.com
     nixpacks
-    nodejs_20
-    nodePackages.pnpm
+    nodejs
+    pnpm
     # OpenTofu - open-source Terraform fork
     # @see https://opentofu.org/
     opentofu

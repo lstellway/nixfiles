@@ -15,28 +15,25 @@
       upgrade = true;
       autoUpdate = true;
       cleanup = "zap";
-      # Issue with cleanup
+      # brew bundle --cleanup renamed to --force-cleanup in newer Homebrew
       # @see https://github.com/nix-darwin/nix-darwin/issues/1787
-      extraFlags = [
-        "--force-cleanup"
-      ];
+      extraFlags = [ "--force-cleanup" ];
     };
 
     global = {
       autoUpdate = true;
       brewfile = true;
-      lockfiles = true;
     };
 
     taps = [
       # "homebrew/core"
       # "homebrew/cask"
       "dcmfx/tap"
-      "lstellway/formulae"
+      # "lstellway/formulae"
     ];
 
     brews = [
-      "acert"
+      # "acert"
       "dcmfx"
       "herdr"
       "mas"

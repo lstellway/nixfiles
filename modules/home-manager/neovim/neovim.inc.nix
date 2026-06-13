@@ -7,7 +7,7 @@
     defaultEditor = true;
     # Lua config files are concatenated in order: general options first,
     # then keymaps, LSP, plugins, and filetype-specific config last.
-    extraLuaConfig = pkgs.lib.concatStrings (
+    initLua = pkgs.lib.concatStrings (
       map (script: (pkgs.lib.readFile script) + "\n") [
         ./init/options.lua
         ./init/keymaps.lua
@@ -57,7 +57,7 @@
       rust-analyzer
       yaml-language-server
       vscode-langservers-extracted
-      nodePackages.typescript
+      typescript
     ];
   };
 }

@@ -1,7 +1,8 @@
--- Treesitter
-require("nvim-treesitter.configs").setup({
-  highlight = { enable = true },
-  indent = { enable = true },
+-- Treesitter highlight (v1.0+ API — nvim-treesitter.configs module removed)
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(ev)
+    pcall(vim.treesitter.start, ev.buf)
+  end,
 })
 
 -- render-markdown.nvim
@@ -15,7 +16,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     -- Treesitter folding
     vim.opt_local.foldmethod = "expr"
-    vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
+    vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
     vim.opt_local.foldlevel = 99
 
     -- Checkbox toggle

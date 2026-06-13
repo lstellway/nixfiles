@@ -16,7 +16,7 @@ in
   };
 
   # Declare OS users from the `users` attrset defined in flake.nix
-  users.users = builtins.mapAttrs (name: user: {pkgs, ...}: {
+  users.users = builtins.mapAttrs (name: user: { pkgs, ... }: {
     name = name;
     home = user.directory;
   }) inputs.users;
@@ -28,7 +28,7 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   # Map each user from flake inputs to a Home Manager configuration
-  home-manager.users = builtins.mapAttrs (name: user: {pkgs, ...}: {
+  home-manager.users = builtins.mapAttrs (name: user: { pkgs, ... }: {
     home.username = name;
     home.homeDirectory = user.directory;
 
@@ -47,7 +47,7 @@ in
     # changes in each release.
     # The state version is required and should stay at the version you
     # originally installed.
-    home.stateVersion = "24.11";
+    home.stateVersion = "26.05";
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
@@ -56,4 +56,3 @@ in
     imports = modules.home;
   }) inputs.users;
 }
-
