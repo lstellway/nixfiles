@@ -28,13 +28,13 @@
     taps = [
       # "homebrew/core"
       # "homebrew/cask"
-      "dcmfx/tap"
+      # "dcmfx/tap"
       # "lstellway/formulae"
     ];
 
     brews = [
       # "acert"
-      "dcmfx"
+      # "dcmfx"
       "herdr"
       "mas"
       "mysql-client"
@@ -51,7 +51,6 @@
       "asana"
       "claude"
       "claude-code"
-      "cursor"
       "discord"
       # "docker"
       "element"

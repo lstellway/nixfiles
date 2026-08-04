@@ -83,6 +83,7 @@
     # @see https://jqlang.github.io/jq/
     jq
     k6
+    lazydocker
     # @see https://github.com/lycheeverse/lychee
     lychee
     # @see https://nixpacks.com
@@ -145,7 +146,6 @@
     xan
     yq
     yt-dlp
-    zoxide
     zsh
   ];
 }
