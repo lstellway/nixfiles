@@ -3,14 +3,17 @@ onboarding = false
 [keys]
 prefix = "ctrl+space"
 
+[ui]
+show_agent_labels_on_pane_borders = true
+
 [ui.sound]
 enabled = true
 
 [ui.toast]
-delivery = "system"
+delivery = "herdr"
 
-[ui]
-show_agent_labels_on_pane_borders = true
+[ui.toast.herdr]
+position = "bottom-right"
 
 [experimental]
 pane_history = false
