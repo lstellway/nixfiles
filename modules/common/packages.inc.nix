@@ -84,6 +84,9 @@
     jq
     k6
     lazydocker
+    # CLI for Linear.app — not in nixpkgs, packaged locally
+    # @see https://github.com/nesszer/linear-cli
+    (pkgs.callPackage ./pkgs/linear-cli.nix { })
     # @see https://github.com/lycheeverse/lychee
     lychee
     # @see https://nixpacks.com
